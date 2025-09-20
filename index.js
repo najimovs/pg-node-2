@@ -3,14 +3,14 @@ import { Client } from "pg"
 const client = new Client( {
 	user: "postgres",
 	host: "localhost",
-	database: "postgres",
+	database: "superapp",
 	password: "math",
 	port: 5432,
 } )
 
 await client.connect()
 
-const query = `select 'Hi!'`
+const query = `select * from users`
 const result = await client.query( query )
 
-console.log( result.rows[ 0 ] )
+console.log( result.rows )
