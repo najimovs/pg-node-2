@@ -33,3 +33,9 @@ insert into users
 ( 5, 'munisaxon', false, 18 )
 ;
 
+SELECT
+	username,
+	is_cary
+FROM
+	users
+;

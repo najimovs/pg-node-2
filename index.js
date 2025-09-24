@@ -10,7 +10,23 @@ const client = new Client( {
 
 await client.connect()
 
-const query = `select * from users`
-const result = await client.query( query )
+const username = "'oybek'; drop table users;"
 
-console.log( result.rows )
+const query = `
+INSERT INTO users (id, username, is_cary, age) VALUES( $1, $2, $3, $4 )
+`
+
+const result = await client.query( query, [ '' ] )
+
+// console.log( result.rows )
+
+// CRUD
+
+// function abc() {}
+	
+// AFTER INSERT users call abc();
+
+// BEFORE|AFTER INSERT
+// BEFORE|AFTER SELECT
+// BEFORE|AFTER UPDATE
+// BEFORE|AFTER DELETE
