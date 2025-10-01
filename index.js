@@ -1,32 +1,15 @@
-import { Client } from "pg"
+import express from "express";
+import authRouter from "./routes/auth.js";
+import usersRouter from "./routes/users.js";
+import transfersRouter from "./routes/transfers.js";
+import cors from "cors";
 
-const client = new Client( {
-	user: "postgres",
-	host: "localhost",
-	database: "superapp",
-	password: "math",
-	port: 5432,
-} )
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-await client.connect()
+app.use("/auth", authRouter);
+app.use("/transfers", transfersRouter);
+app.use("/users", usersRouter)
 
-const username = "'oybek'; drop table users;"
-
-const query = `
-INSERT INTO users (id, username, is_cary, age) VALUES( $1, $2, $3, $4 )
-`
-
-const result = await client.query( query, [ '' ] )
-
-// console.log( result.rows )
-
-// CRUD
-
-// function abc() {}
-	
-// AFTER INSERT users call abc();
-
-// BEFORE|AFTER INSERT
-// BEFORE|AFTER SELECT
-// BEFORE|AFTER UPDATE
-// BEFORE|AFTER DELETE
+app.listen(3000, () => console.log("Server http://localhost:3000 da ishlayapti"));
