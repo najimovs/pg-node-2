@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node index.js",
+		"start": "node index.js --host",
 		"dev": "node --watch index.js"
 	},
 	"keywords": [],
@@ -13,6 +13,11 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.16.1",
 	"dependencies": {
+		"bcrypt": "^6.0.0",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.2",
+		"express": "^5.1.0",
+		"jsonwebtoken": "^9.0.2",
 		"pg": "^8.16.3"
 	}
 }
